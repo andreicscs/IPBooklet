@@ -30,7 +30,6 @@ The codebase is organized into clean abstraction layers to separate logic from r
 * **Infrastructure Layer (`src/IPBnetwork.c`, `src/IPBparser.c`)**: Manages raw TCP/UDP socket creation, byte-level serialization, and protocol string formatting.
 
 ### Abstraction layers and dependency graph:
-> Generated using an LLM.
 ```
 
 ================================================================================
@@ -39,26 +38,26 @@ The codebase is organized into clean abstraction layers to separate logic from r
 ================================================================================
 
         [ apps/clientMain.c ]                      [ apps/serverMain.c ]
-      (User Interface / Menus)                   (Connection Loop / Threads) -------------------------+
-                 |                                          |                                         |
-                 |                                          |                                         |
-================================================================================                      |
-                                   LOGIC LAYER                                                        |
- (The "Brains" that handle lower level logic / data structures implementations)                       |
-================================================================================                      |
-                 v                                          v                                         |
-     [ src/IPBclientAPI.c ]                       [ src/IPBserverData.c ]                             |
-     (Full client api)				              (Manages Users, Friends, Mutex)                     |
-    - Client functionalities                     - Server backend funtionalities                      |
-                 |                                                                                    |
-                 |                                                                                    |
-================================================================================                      |
-                              INFRASTRUCTURE LAYER                                                    |
-                    (The "Workers" that do the heavy lifting)                                         |
-================================================================================                      |
-                 v                                                                                    |
-        [ src/IPBparser.c ]                        [ src/IPBnetwork.c ]                               |
-        (The "Translator")                         (The "Postman")          <-------------------------+
+      (User Interface / Menus)                   (Connection Loop / Threads) ----------------------+
+                 |                                          |                                      |
+                 |                                          |                                      |
+================================================================================                   |
+                                   LOGIC LAYER                                                     |
+ (The "Brains" that handle lower level logic / data structures implementations)                    |
+================================================================================                   |
+                 v                                          v                                      |
+     [ src/IPBclientAPI.c ]                       [ src/IPBserverData.c ]                          |
+     (Full client api)				              (Manages Users, Friends, Mutex)                            |
+    - Client functionalities                     - Server backend funtionalities                   |
+                 |                                                                                 |
+                 |                                                                                 |
+================================================================================                   |
+                              INFRASTRUCTURE LAYER                                                 |
+                    (The "Workers" that do the heavy lifting)                                      |
+================================================================================                   |
+                 v                                                                                 |
+        [ src/IPBparser.c ]                        [ src/IPBnetwork.c ]                            |
+        (The "Translator")                         (The "Postman")          <----------------------+
       - Packs Structs -> Bytes                    - Opens Sockets (TCP/UDP)
       - Unpacks Bytes -> Structs                  - Sends/Receives Raw Data
       - Validates Data                            - Handles Timeouts
