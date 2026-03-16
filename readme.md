@@ -47,7 +47,7 @@ The codebase is organized into clean abstraction layers to separate logic from r
 ================================================================================                   |
                  v                                          v                                      |
      [ src/IPBclientAPI.c ]                       [ src/IPBserverData.c ]                          |
-     (Full client api)				              (Manages Users, Friends, Mutex)                            |
+     (Full client api)				                        (Manages Users, Friends, Mutex)                  |
     - Client functionalities                     - Server backend funtionalities                   |
                  |                                                                                 |
                  |                                                                                 |
